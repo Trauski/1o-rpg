@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://c8h2s3dybgicw"]
+
+[ext_resource type="Texture2D" uid="uid://dm5sm53fwmjyp" path="res://assets/environment/tilesheets/Shadow.png" id="1_jl6g0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jmoem"]
+texture = ExtResource("1_jl6g0")
+texture_region_size = Vector2i(192, 192)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_jmoem")

@@ -12,6 +12,7 @@ enum State {
 @export_category("Stats")
 @export var speed: int = 400
 @export var attack_speed: float = 0.6
+@export var attack_damage: int = 60
 
 var state: State = State.IDLE
 var move_direction: Vector2 = Vector2(0,0)
@@ -63,14 +64,8 @@ func update_animation() -> void:
 			animation_playback.travel("idle")
 		State.RUN:
 			animation_playback.travel("run")
-		State.DASH:
-			animation_playback.travel("dash")
 		State.ATTACK:
 			animation_playback.travel("attack")
-		State.GUARD:
-			animation_playback.travel("guard")
-		State.DEAD:
-			animation_playback.travel("dead")
 
 
 func attack() -> void:
@@ -89,3 +84,8 @@ func attack() -> void:
 	# Return the player state after attack finished
 	await get_tree().create_timer(attack_speed).timeout
 	state = State.IDLE
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	area.owner.take_damage(attack_damage)
+
+
